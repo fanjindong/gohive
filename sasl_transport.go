@@ -19,7 +19,7 @@ const (
 	COMPLETE = 5
 )
 
-const DEFAULT_MAX_LENGTH = 16384000
+const DEFAULT_MAX_LENGTH = 163840000
 
 // TSaslTransport is a tranport thrift struct that uses SASL
 type TSaslTransport struct {

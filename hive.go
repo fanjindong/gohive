@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"encoding/base64"
 	"fmt"
+	"log"
 	"math/rand"
 	"net/http"
 	"net/url"
@@ -13,11 +14,10 @@ import (
 	"strings"
 	"sync"
 	"time"
-	"log"
 
 	"github.com/apache/thrift/lib/go/thrift"
-	"github.com/beltran/gohive/hiveserver"
 	"github.com/beltran/gosasl"
+	"github.com/fanjindong/gohive/hiveserver"
 	"github.com/go-zookeeper/zk"
 )
 

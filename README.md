@@ -7,7 +7,7 @@ GoHive is a driver for Hive and the [Spark Distributed SQL Engine](https://spark
 ## Installation
 Gohive can be installed with:
 ```
-go get github.com/beltran/gohive
+go get github.com/fanjindong/gohive
 ```
 
 To add kerberos support gohive requires header files to build against the GSSAPI C library. They can be installed with:
@@ -17,7 +17,7 @@ To add kerberos support gohive requires header files to build against the GSSAPI
 
 Then:
 ```
-go get -tags kerberos github.com/beltran/gohive
+go get -tags kerberos github.com/fanjindong/gohive
 ```
 
 ## Quickstart
@@ -128,11 +128,11 @@ cursor.FetchOne(context.Background(), &i)
 ```
 Alternatively, using the rowmap API, `m := cursor.RowMap(context.Background())`,
  `m` would be `map[string]interface{}{"table_name.column_name": nil}` for a `NULL` value. It will return a map
-where the keys are `table_name.column_name`. This works fine with hive but using [Spark Thirft SQL server](https://spark.apache.org/docs/latest/sql-distributed-sql-engine.html) `table_name` is not present and the keys are `column_name` and it can [lead to problems](https://github.com/beltran/gohive/issues/120) if two tables have the same column name so the `FetchOne` API should be used in this case.
+where the keys are `table_name.column_name`. This works fine with hive but using [Spark Thirft SQL server](https://spark.apache.org/docs/latest/sql-distributed-sql-engine.html) `table_name` is not present and the keys are `column_name` and it can [lead to problems](https://github.com/fanjindong/gohive/issues/120) if two tables have the same column name so the `FetchOne` API should be used in this case.
 
 ## Running tests
 Tests can be run with:
 ```
 ./scripts/integration
 ```
-This uses [dhive](https://github.com/beltran/dhive) and it will start two docker instances with hive and kerberos. `kinit`, `klist`, `kdestroy` have to be installed locally. `hs2.example.com` will have to be an alias for 127.0.0.1 in `/etc/hosts`. The krb5 configuration file should be created with `bash scripts/create_krbconf.sh`. Overall the [steps used in the travis CI](https://github.com/beltran/gohive/blob/ec69b5601829296a56ca0558693ed30c11180a94/.travis.yml#L24-L46) can be followed.
+This uses [dhive](https://github.com/beltran/dhive) and it will start two docker instances with hive and kerberos. `kinit`, `klist`, `kdestroy` have to be installed locally. `hs2.example.com` will have to be an alias for 127.0.0.1 in `/etc/hosts`. The krb5 configuration file should be created with `bash scripts/create_krbconf.sh`. Overall the [steps used in the travis CI](https://github.com/fanjindong/gohive/blob/ec69b5601829296a56ca0558693ed30c11180a94/.travis.yml#L24-L46) can be followed.
